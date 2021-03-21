@@ -20,7 +20,6 @@ import { has_ctrl_or_cmd_pressed, ctrl_or_cmd_name, is_mac_keyboard, in_textarea
 import { handle_log } from "../common/Logging.js"
 import { PlutoContext, PlutoBondsContext } from "../common/PlutoContext.js"
 import { useDropHandler } from "./useDropHandler.js"
-import { PasteConsumer } from "./PasteHandler.js"
 
 const default_path = "..."
 const DEBUG_DIFFING = false
@@ -1021,7 +1020,6 @@ patch: ${JSON.stringify(
                         }}
                     />
                     <${SlideControls} />
-                    <${PasteConsumer} />
                     <footer>
                         <div id="info">
                             <form id="feedback" action="#" method="post">
