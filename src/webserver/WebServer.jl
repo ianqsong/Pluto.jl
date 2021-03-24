@@ -96,10 +96,11 @@ end
 # Deprecation errors
 
 function run(host::String, port::Union{Nothing,Integer}=nothing; kwargs...)
-    @error "Deprecated in favor of:
+@error """run(host, port) is deprecated in favor of:
     
-        run(;host=$host, port=$port)
-    "
+        run(;host="$host", port=$port)  
+    
+    """
 end
 
 function run(port::Integer; kwargs...)
@@ -221,10 +222,6 @@ function run(session::ServerSession)
 
             request_body = IOBuffer(HTTP.payload(request))
             response_body = HTTP.handle(pluto_router, request)
-            if !eof(request_body)
-                # no request body
-                @warn "HTTP request contains a body, huh?" request_body
-            end
     
             request.response::HTTP.Response = response_body
             request.response.request = request
