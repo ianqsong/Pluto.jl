@@ -1,9 +1,9 @@
 import MsgPack
-import UUIDs:UUID
+import UUIDs: UUID
 import HTTP
 import Sockets
 
-import Base:endswith
+import Base: endswith
 function endswith(vec::Vector{T}, suffix::Vector{T}) where T
     local liv = lastindex(vec)
     local lis = lastindex(suffix)
@@ -44,7 +44,7 @@ function open_in_default_browser(url::AbstractString)::Bool
             Base.run(`powershell.exe Start "$url"`)
             true
         elseif Sys.islinux()
-    Base.run(`xdg-open $url`)
+            Base.run(`xdg-open $url`)
             true
         else
             false
@@ -57,7 +57,7 @@ end
 isurl(s::String) = startswith(s, "http://") || startswith(s, "https://")
 
 swallow_exception(f, exception_type::Type{T}) where T =
-try f()
+    try f()
     catch e
         isa(e, T) || rethrow(e)
     end
@@ -96,7 +96,7 @@ end
 # Deprecation errors
 
 function run(host::String, port::Union{Nothing,Integer}=nothing; kwargs...)
-@error """run(host, port) is deprecated in favor of:
+    @error """run(host, port) is deprecated in favor of:
     
         run(;host="$host", port=$port)  
     
@@ -165,7 +165,7 @@ function run(session::ServerSession)
 
                                 process_ws_message(session, parentbody, clientstream)
                             catch ex
-                                    if ex isa InterruptException
+                                if ex isa InterruptException
                                     shutdown_server[]()
                                 elseif ex isa HTTP.WebSockets.WebSocketError || ex isa EOFError
                                     # that's fine!
@@ -302,7 +302,7 @@ function pretty_address(session::ServerSession, hostIP, port)
     end
 
     url_params = Dict{String,String}()
-    
+
     if session.options.security.require_secret_for_access
         url_params["secret"] = session.secret
     end
