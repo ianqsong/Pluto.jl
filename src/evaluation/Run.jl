@@ -196,7 +196,7 @@ function update_from_file(session::ServerSession, notebook::Notebook)
 	just_loaded = try
 		load_notebook_nobackup(notebook.path)
 	catch e
-		@info "Skipping hot reload because loading the file went wrong" exception=(e,catch_backtrace())
+		@error "Skipping hot reload because loading the file went wrong" exception=(e,catch_backtrace())
 		return
 	end
 
