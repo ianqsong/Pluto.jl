@@ -309,17 +309,19 @@ export class Welcome extends Component {
             })
         }
 
-        return html`<p>New session:</p>
+        return html`
             <ul id="new">
-                <li>Open a <a href="sample">sample notebook</a></li>
                 <li>Create a <a href="new">new notebook</a></li>
-                <li>
-                    Open from file:
-                    <${FilePicker} client=${this.client} value="" on_submit=${this.on_open_path} button_label="Open" placeholder="Enter path or URL..." />
+                <li style="display: flex;flex-direction: row;">
+                <span style="margin-top: 0.08rem">Open from file: </span>
+                <div class="flex_grow_1"></div>
+                <${FilePicker} client=${this.client} 
+                    value="" on_submit=${this.on_open_path} button_label="Open" 
+                    placeholder="Enter path or URL..." 
+                />
                 </li>
+                <li>Recent sessions:</li>
             </ul>
-            <br />
-            <p>Recent sessions:</p>
             <ul id="recent">
                 ${recents}
             </ul>`

@@ -110,8 +110,8 @@ export const CellInput = ({
 
         const keys = {}
 
-        keys["Shift-Enter"] = () => on_submit()
-        keys["Ctrl-Enter"] = async () => {
+        keys["Ctrl-Enter"] = () => on_submit()
+        keys["Shift-Enter"] = async () => {
             // we await to prevent an out-of-sync issue
             await on_add_after()
 

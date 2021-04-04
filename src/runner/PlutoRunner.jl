@@ -20,6 +20,8 @@ import Base: show, istextmime
 import UUIDs: UUID
 import Logging
 
+include(abspath(DEPOT_PATH[1], "config", "Chain_.jl"))
+
 export @bind
 
 MimedOutput = Tuple{Union{String,Vector{UInt8},Dict{Symbol,Any}},MIME}
